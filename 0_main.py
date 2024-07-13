@@ -10,7 +10,7 @@ print("---------------------- Script Cluster ----------------------\n")
 print("Digite 1 - Para configurar o mestre \n") 
 print("Digite 2 - Para configurar os escravos: \n")
 
-maquina = 2
+maquina = int(input("~: "))
 
 match maquina:
     case 1:
