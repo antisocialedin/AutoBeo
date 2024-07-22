@@ -6,7 +6,8 @@
 import os
 
 #interfaces
-#os.system("touch /etc/network/interfaces")
+os.system("echo > /etc/network/interfaces") #limpa o arquivo
+
 arquivo = open("/etc/network/interfaces", "a")
 interfaces = list()
 interfaces.append("auto enp0s3 \n") #verificar nome da placa
