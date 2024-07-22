@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # Eder Filho
 # 01/07/2023
-# SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - DEPENDENCIAS
+# SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - MAIN
 
 import os
 
