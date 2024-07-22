@@ -6,7 +6,10 @@
 import os
 
 #Configuração do DHCP
-#os.system("touch /etc/default/isc-dhcp-server​")
+
+#criando rede
+os.system("sudo ifconfig enp0s3 192.168.40.1 netmask 255.255.255.0 ​")
+
 arquivo = open("/etc/default/isc-dhcp-server​", "a")
 dhcp = list()
 dhcp.append('INTERFACESv4="enp0s3" \n') #verificar nome da placa
