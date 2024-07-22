@@ -36,6 +36,3 @@ os.system("sudo service isc-dhcp-server start​")
 
 #status do serviço
 os.system("sudo service isc-dhcp-server status​")
-
-#restart do serviço
-os.system("sudo service isc-dhcp-server restart​")
