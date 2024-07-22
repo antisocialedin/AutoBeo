@@ -5,16 +5,27 @@
 
 import os
 
+
 #Verificação de máquina
 print("---------------------- Script Cluster ----------------------\n")
-print("Digite 1 - Para configurar o mestre \n") 
-print("Digite 2 - Para configurar os escravos: \n")
+print("Digite 1 - Configurar DHCP \n")
+print("Digite 2 - Restart DHCP \n")
+print("Digite 3 - Para configurar o mestre \n") 
+print("Digite 4 - Para configurar os escravos: \n")
 
 maquina = int(input("~: "))
 
 match maquina:
     case 1:
-        print("Configurando o mestre")
+        print("Configurando DHCP...")
+        os.system("sudo python 1_dhcp.py​")
+
     case 2:
-        print("Configurando os escravos")
+        os.system("sudo service isc-dhcp-server restart​")
+
+    case 3:
+        print("Configurando o mestre...")
+
+    case 4:
+        print("Configurando os escravos...")
 
