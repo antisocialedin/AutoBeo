@@ -9,7 +9,7 @@ import os
 
 #criando rede
 os.system("sudo ifconfig enp0s3 192.168.40.1 netmask 255.255.255.0 ​")
-^
+
 os.system("echo > /etc/default/isc-dhcp-server") #limpa o arquivo
 
 arquivo = open("/etc/default/isc-dhcp-server​", "a")
@@ -18,6 +18,7 @@ dhcp.append('INTERFACESv4="enp0s3" \n') #verificar nome da placa
 arquivo.writelines(dhcp)
 
 os.system("echo > /etc/dhcp/dhcpd.conf") #limpa o arquivo
+
 arquivo = open("/etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede"; \n')
