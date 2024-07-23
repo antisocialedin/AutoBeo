@@ -15,7 +15,7 @@ dhcp = list()
 dhcp.append('INTERFACESv4="enp0s3" \n') #verificar nome da placa
 arquivo.writelines(dhcp)
 
-arquivo = open("/etc/dhcp/dhcpd", "a")
+arquivo = open("/etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede"; \n')
 dhcp2.append('option domain-name-servers teste1.laboratorio.rede;​ \n')
