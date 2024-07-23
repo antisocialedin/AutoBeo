@@ -18,7 +18,7 @@ maquina = int(input("~: "))
 match maquina:
     case 1:
         print("Configurando DHCP...")
-        os.system("sudo python 1_dhcp.py​")
+        os.system("sudo python3 1_dhcp.py​")
 
     case 2:
         os.system("sudo service isc-dhcp-server restart​")
