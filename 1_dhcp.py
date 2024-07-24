@@ -12,7 +12,7 @@ os.system("sudo ifconfig enp0s3 192.168.40.1 netmask 255.255.255.0​")
 
 os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
-arquivo = open("/etc/default/isc-dhcp-server​", "a")
+arquivo = open("/etc/default/isc-dhcp-server.txt​", "a")
 dhcp = list()
 dhcp.append('INTERFACESv4="enp0s3" \n') #verificar nome da placa
 arquivo.writelines(dhcp)
