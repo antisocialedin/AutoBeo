@@ -8,7 +8,7 @@ import os
 #Configuração do DHCP
 
 #criando rede
-os.system("sudo ifconfig enp0s3 192.168.40.1 netmask 255.255.255.0 ​")
+os.system("sudo ifconfig enp0s3 192.168.40.1 netmask 255.255.255.0​")
 
 os.system("echo > /etc/default/isc-dhcp-server") #limpa o arquivo
 
@@ -22,9 +22,9 @@ os.system("echo > /etc/dhcp/dhcpd.conf") #limpa o arquivo
 arquivo = open("/etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede"; \n')
-dhcp2.append('option domain-name-servers teste1.laboratorio.rede;​ \n')
+dhcp2.append('option domain-name-servers teste1.laboratorio.rede;​\n')
 dhcp2.append('default-lease-time 3000; \n')
-dhcp2.append('max-lease-time 7200;​ \n')
+dhcp2.append('max-lease-time 7200;​\n')
 dhcp2.append('authoritative; \n\n')
 
 dhcp2.append('subnet 192.168.40.0 netmask 255.255.255.0 {​\n')
