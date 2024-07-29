@@ -10,7 +10,7 @@ import os
 #criando rede
 os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0​")
 
-#os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
+os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
 arquivo = open("/etc/default/isc-dhcp-server​", "a")
 dhcp = list()
@@ -37,7 +37,7 @@ dhcp2.append('}​\n')
 arquivo.writelines(dhcp2)
 
 #start do serviço  
-os.system("sudo service isc-dhcp-server start​")
+os.system("sudo /etc/init.d/isc-dhcp-server start​")
 
 #status do serviço
-os.system("sudo service isc-dhcp-server status​")
+os.system("sudo /etc/init.d/isc-dhcp-server status​")
