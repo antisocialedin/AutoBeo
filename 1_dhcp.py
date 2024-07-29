@@ -8,9 +8,9 @@ import os
 #Configuração do DHCP
 
 #criando rede
-os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0​")
+#os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0​")
 
-""" os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
+os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
 arquivo = open("/etc/default/isc-dhcp-server​", "a")
 dhcp = list()
@@ -40,4 +40,4 @@ arquivo.writelines(dhcp2)
 os.system("sudo /etc/init.d/isc-dhcp-server start​")
 
 #status do serviço
-os.system("sudo /etc/init.d/isc-dhcp-server status​") """
+os.system("sudo /etc/init.d/isc-dhcp-server status​")
