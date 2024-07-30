@@ -6,5 +6,7 @@
 #import os
 import subprocess
 
-result = subprocess.run(['dhcp-lease-list'], capture_output=True, text=True)
+result = subprocess.run(["dhcp-lease-list | tail -n +4 | cut -d ' ' -f 3"], capture_output=True, text=True)
 print(result.stdout)
+
+
