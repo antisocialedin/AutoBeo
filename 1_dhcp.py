@@ -8,7 +8,7 @@ import os
 #Configuração do DHCP
 
 #criando rede
-os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0")
+os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0") #verificar nome da placa
 
 os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
