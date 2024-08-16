@@ -25,4 +25,4 @@ os.chdir(os.path.expanduser("~/.ssh"))
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
 for ip in ip_list:
-    os.system(f"ssh-copy-id -i ~/.ssh/id_rsa.pub {ip}")
+    os.system(f"ssh-copy-id -i ~/.ssh/id_rsa.pub cluster@{ip}")
