@@ -14,13 +14,13 @@ os.system("sudo systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("sudo systemctl status ssh")
 
+#gerar key SSH 
+print("Gerando chave ssh...")
+os.system("ssh-keygen")
+
 #caminho da pasta .ssh
 print("Caminhando para a pasta .ssh...")
 os.system("cd ~/.ssh")
-
-#gerar key SSH 
-print("Gerando chave ssh...")
-os.system("ssh keygen")
 
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
