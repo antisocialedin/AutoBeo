@@ -10,6 +10,7 @@ import subprocess
 result = subprocess.run('dhcp-lease-list | tail -n +4 | cut -d " " -f 3', shell=True, capture_output=True, text=True)
 
 # Divide a saída em linhas e armazena em uma lista
+print("Gerando lista de IPs conectados...")
 ip_list = result.stdout.splitlines()
 
 # Imprime a lista de IPs
