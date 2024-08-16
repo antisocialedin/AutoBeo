@@ -6,14 +6,15 @@
 import os
 
 while True:
-#Verificação de máquina
-print("---------------------- Script Cluster ----------------------\n")
-print("Digite 1 - Configurar servidor DHCP \n")
-print("Digite 2 - Restart servidor DHCP \n")
-print("Digite 3 - Configurar o servidor SSH \n") 
-print("Digite 4 - Configurar o mestre \n") 
-print("Digite 5 - Configurar os escravos \n")
-print("Digite 99 - SAIR \n")
+
+    #Verificação de máquina
+    print("---------------------- Script Cluster ----------------------\n")
+    print("Digite 1 - Configurar servidor DHCP \n")
+    print("Digite 2 - Restart servidor DHCP \n")
+    print("Digite 3 - Configurar o servidor SSH \n") 
+    print("Digite 4 - Configurar o mestre \n") 
+    print("Digite 5 - Configurar os escravos \n")
+    print("Digite 99 - SAIR \n")
 
     maquina = int(input("~: "))
 
