@@ -14,6 +14,10 @@ os.system("sudo systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("sudo systemctl status ssh")
 
+#caminho da pasta .ssh
+print("Caminhando para a pasta .ssh...")
+os.system("cd ~/.ssh")
+
 #gerar key SSH 
 print("Gerando chave ssh...")
 os.system("ssh keygen")
