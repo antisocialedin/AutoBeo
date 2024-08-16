@@ -4,6 +4,7 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - SSH
 
 import os
+from dhcp_client import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 #start no SSH
 os.system("sudo systemctl enable ssh")
@@ -14,8 +15,6 @@ os.system("sudo systemctl status ssh")
 #gerar key SSH 
 os.system("ssh keygen")
 
-#copiar key para nó 1
-os.system("ssh-copy-id -i ~/.ssh/id_rsa.pub no1")
-
-#copiar key para nó 2
-os.system("ssh-copy-id -i ~/.ssh/id_rsa.pub no2")
+# Copia a chave para cada IP na lista
+for ip in ip_list:
+    os.system(f"ssh-copy-id -i ~/.ssh/id_rsa.pub {ip}")
