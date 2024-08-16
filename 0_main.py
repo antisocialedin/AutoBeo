@@ -15,9 +15,9 @@ print("Digite 4 - Configurar o mestre \n")
 print("Digite 5 - Configurar os escravos \n")
 print("Digite 99 - SAIR \n")
 
-maquina = int(input("~: "))
-
 while True:
+    maquina = int(input("~: "))
+
     match maquina:
         case 1:
             print("Configurando servidor DHCP...")
@@ -38,8 +38,8 @@ while True:
             print("Configurando os escravos...")
 
         case 99:
-                print("Saindo...")
-                break
+            print("Saindo...")
+            break
 
         case _:
             print("Opção inválida. Tente novamente.")
