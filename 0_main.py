@@ -5,7 +5,7 @@
 
 import os
 
-
+while True:
 #Verificação de máquina
 print("---------------------- Script Cluster ----------------------\n")
 print("Digite 1 - Configurar servidor DHCP \n")
@@ -15,7 +15,6 @@ print("Digite 4 - Configurar o mestre \n")
 print("Digite 5 - Configurar os escravos \n")
 print("Digite 99 - SAIR \n")
 
-while True:
     maquina = int(input("~: "))
 
     match maquina:
