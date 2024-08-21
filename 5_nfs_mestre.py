@@ -8,6 +8,8 @@ import os
 #criar diretório compartilhado mestre
 os.system("mkdir clusterdir")
 
+os.system("echo > /etc/exports") #limpa o arquivo
+
 #editar exports (apenas Mestre)
 arquivo = open("/etc/exports", "a")
 exports = list()
