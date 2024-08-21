@@ -4,7 +4,7 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - SSH
 
 import os
-from dhcp_client import ip_list  # Importa a lista de IPs do arquivo ip_list.py
+from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 #start no SSH
 print("Iniciando servidor ssh...")

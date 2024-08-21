@@ -4,7 +4,7 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
 import os
-from dhcp_client import ip_list  # Importa a lista de IPs do arquivo ip_list.py
+from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 #criar e copiar conteudo do diretório compartilhado (apenas Nós)
 for ip in ip_list:
