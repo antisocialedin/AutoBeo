@@ -10,7 +10,7 @@ from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 for ip in ip_list:
 
     os.system(f"ssh cluster@{ip}")
-    os.system("mkdir clusterdir")
+    os.system("mkdir ~/clusterdir")
     os.system("sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir")
 
     #editar fstab (apenas Nós)

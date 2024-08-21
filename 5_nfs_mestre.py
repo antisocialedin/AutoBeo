@@ -6,7 +6,7 @@
 import os
 
 #criar diretório compartilhado mestre
-os.system("mkdir clusterdir")
+os.system("mkdir ~/clusterdir")
 
 os.system("echo > /etc/exports") #limpa o arquivo
 
