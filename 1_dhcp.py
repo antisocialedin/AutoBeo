@@ -23,7 +23,7 @@ arquivo = open("/etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede";\n')
 dhcp2.append('option domain-name-servers teste1.laboratorio.rede;\n')
-dhcp2.append('default-lease-time 10;\n')
+dhcp2.append('default-lease-time 60;\n')
 dhcp2.append('max-lease-time 86400;\n')
 dhcp2.append('authoritative;\n\n')
 
