@@ -11,14 +11,14 @@ for ip in ip_list:
 
     os.system(f"ssh cluster@{ip}")
     os.system("mkdir clusterdir")
-    os.system("sudo mount -t nfs 192.168.40.0:/home/cluster/clusterdir /home/cluster/clusterdir")
+    os.system("sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir")
 
     #editar fstab (apenas Nós)
     os.system("echo > /etc/fstab") #limpa o arquivo
-    
+
     arquivo = open("/etc/fstab", "a")
     fstab = list()
-    fstab.append("192.168.40.0:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0 \n")
+    fstab.append("192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0 \n")
     arquivo.writelines(fstab)
 
     os.system("exit")
