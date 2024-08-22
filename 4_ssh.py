@@ -14,8 +14,8 @@ os.system("systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("systemctl status ssh")
 
-#Saindo do sudo
-os.system("su - cluster")
+""" #Saindo do sudo
+os.system("su - cluster") """
 
 #gerar key SSH 
 print("Gerando chave ssh...")
