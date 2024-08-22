@@ -23,7 +23,7 @@ os.system("ssh-keygen")
 
 #caminho da pasta .ssh
 print("Caminhando para a pasta .ssh...")
-os.chdir(os.path.expanduser("~/cluster/.ssh"))
+os.chdir(os.path.expanduser("~/.ssh"))
 
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
