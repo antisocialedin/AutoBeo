@@ -24,19 +24,19 @@ while True:
     match opt:
 
         case 0:
-            print("Configurando servidor DHCP...")
+            print("\nConfigurando servidor DHCP...\n")
             os.system("python3 1_dhcp.py")
 
-            print("Configurando servidor ssh...")
+            print("\nConfigurando servidor ssh...\n")
             os.system("python3 4_ssh.py")
 
-            print("Configurando NFS mestre...")
+            print("\nConfigurando NFS mestre...\n")
             os.system("python3 5_nfs_mestre.py")
 
-            print("Configurando NFS nos...")
+            print("\nConfigurando NFS nos...\n")
             os.system("python3 5_nfs_nos.py")
 
-            print("Gerando .mpi_hostfile...")
+            print("\nGerando .mpi_hostfile...\n")
             os.system("python3 6_mpi_hostfile.py")
 
         case 1:
