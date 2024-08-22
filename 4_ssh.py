@@ -8,14 +8,14 @@ from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 #start no SSH
 print("Iniciando servidor ssh...")
-os.system("sudo systemctl enable ssh")
+os.system("systemctl enable ssh")
 
 #monitorar o SSH
 print("Monitorando servidor ssh...")
-os.system("sudo systemctl status ssh")
+os.system("systemctl status ssh")
 
 #Saindo do sudo
-os.system("exit")
+os.system("su - cluster")
 
 #gerar key SSH 
 print("Gerando chave ssh...")

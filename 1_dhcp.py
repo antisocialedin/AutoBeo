@@ -37,7 +37,7 @@ dhcp2.append('}')
 arquivo.writelines(dhcp2)
 
 #start do serviço  
-os.system("sudo service isc-dhcp-server start")
+os.system("systemctl enable isc-dhcp-server")
 
 #status do serviço
-os.system("sudo /etc/init.d/isc-dhcp-server status")
+os.system("systemctl status isc-dhcp-server")

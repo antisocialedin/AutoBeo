@@ -25,50 +25,50 @@ while True:
 
         case 0:
             print("Configurando servidor DHCP...")
-            os.system("sudo python3 1_dhcp.py")
+            os.system("python3 1_dhcp.py")
 
             print("Configurando servidor ssh...")
-            os.system("sudo python3 4_ssh.py")
+            os.system("python3 4_ssh.py")
 
             print("Configurando NFS mestre...")
-            os.system("sudo python3 5_nfs_mestre.py")
+            os.system("python3 5_nfs_mestre.py")
 
             print("Configurando NFS nos...")
-            os.system("sudo python3 5_nfs_nos.py")
+            os.system("python3 5_nfs_nos.py")
 
             print("Gerando .mpi_hostfile...")
-            os.system("sudo python3 6_mpi_hostfile.py")
+            os.system("python3 6_mpi_hostfile.py")
 
         case 1:
             print("Configurando servidor DHCP...")
-            os.system("sudo python3 1_dhcp.py")
+            os.system("python3 1_dhcp.py")
 
         case 2:
             print("Start servidor DHCP...")
-            os.system("sudo service isc-dhcp-server start")
+            os.system("service isc-dhcp-server start")
         
         case 3:
             print("Status servidor DHCP...")
-            os.system("sudo service isc-dhcp-server status")
+            os.system("service isc-dhcp-server status")
 
         case 4:
             print("Restart servidor DHCP...")
-            os.system("sudo service isc-dhcp-server restart")
+            os.system("service isc-dhcp-server restart")
 
         case 5:
             print("Configurando servidor ssh...")
-            os.system("sudo python3 4_ssh.py")
+            os.system("python3 4_ssh.py")
 
         case 6:
             print("Configurando NFS mestre...")
-            os.system("sudo python3 5_nfs_mestre.py")
+            os.system("python3 5_nfs_mestre.py")
 
             print("Configurando NFS nos...")
-            os.system("sudo python3 5_nfs_nos.py")
+            os.system("python3 5_nfs_nos.py")
 
         case 7:
             print("Gerando .mpi_hostfile...")
-            os.system("sudo python3 6_mpi_hostfile.py")
+            os.system("python3 6_mpi_hostfile.py")
 
         case 99:
             print("Saindo...")
