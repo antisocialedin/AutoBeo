@@ -14,22 +14,15 @@ os.system("systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("systemctl status ssh")
 
-""" #Saindo do sudo
-os.system("su - cluster") """
-
 #gerar key SSH 
 print("Gerando chave ssh...")
 os.system("ssh-keygen")
 
 #caminho da pasta .ssh
 print("Caminhando para a pasta .ssh...")
-os.chdir(os.path.expanduser("~/.ssh"))
+os.chdir("/home/cluster/.ssh")
 
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
 for ip in ip_list:
-    os.system(f"ssh-copy-id -i ~/.ssh/id_rsa.pub cluster@{ip}")
-
-#caminho da pasta /home
-print("Caminhando para a pasta .ssh...")
-os.chdir(os.path.expanduser("~"))
+    os.system(f"ssh-copy-id -i /home/cluster/.ssh/id_rsa.pub cluster@{ip}")
