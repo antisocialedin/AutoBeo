@@ -12,14 +12,14 @@ os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0") #verificar 
 
 os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
-arquivo = open("/etc/default/isc-dhcp-server", "a")
+arquivo = open("sudo /etc/default/isc-dhcp-server", "a")
 dhcp = list()
 dhcp.append('INTERFACESv4="enp0s8"\n') #verificar nome da placa
 arquivo.writelines(dhcp)
 
 os.system(" > /etc/dhcp/dhcpd.conf") #limpa o arquivo
 
-arquivo = open("/etc/dhcp/dhcpd.conf", "a")
+arquivo = open("sudo /etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede";\n')
 dhcp2.append('option domain-name-servers teste1.laboratorio.rede;\n')
