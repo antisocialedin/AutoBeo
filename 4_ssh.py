@@ -22,8 +22,8 @@ ssh_key_dir = "/home/cluster/.ssh"
 ssh_key_path = os.path.join(ssh_key_dir, "id_rsa")
 
 #gerar key SSH 
-print(f"Gerando chave ssh em {ssh_key_dir}...")
-os.system(f"ssh-keygen -f {ssh_key_dir}")
+print(f"Gerando chave ssh em {ssh_key_path}...")
+os.system(f"ssh-keygen -f {ssh_key_path}")
 
 #caminho da pasta .ssh
 print("Caminhando para a pasta .ssh...")
