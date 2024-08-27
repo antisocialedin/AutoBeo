@@ -25,10 +25,7 @@ ssh_key_path = os.path.join(ssh_key_dir, "id_rsa")
 print(f"Gerando chave ssh em {ssh_key_path}...")
 os.system(f"ssh-keygen -f {ssh_key_path} -N ''")
 
-# Mudar para o diretório .ssh
-os.chdir(ssh_key_dir)
-
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
 for ip in ip_list:
-    os.system(f"ssh-copy-id -i {ssh_key_path}.pub cluster@{ip}")
+    os.system(f"sudo -u cluster ssh-copy-id -i {ssh_key_path}.pub cluster@{ip}")
