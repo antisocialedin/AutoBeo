@@ -10,8 +10,6 @@ import os
 #criando rede
 os.system("sudo ifconfig enp0s8 192.168.40.1 netmask 255.255.255.0") #verificar nome da placa
 
-os.system("sudo -i") #logar como root
-
 os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
 arquivo = open("/etc/default/isc-dhcp-server", "a")
@@ -21,7 +19,7 @@ arquivo.writelines(dhcp)
 
 os.system(" > /etc/dhcp/dhcpd.conf") #limpa o arquivo
 
-arquivo = open(" /etc/dhcp/dhcpd.conf", "a")
+arquivo = open("/etc/dhcp/dhcpd.conf", "a")
 dhcp2 = list()
 dhcp2.append('option domain-name "laboratorio.rede";\n')
 dhcp2.append('option domain-name-servers teste1.laboratorio.rede;\n')
@@ -38,7 +36,6 @@ dhcp2.append('range 192.168.40.20 192.168.40.100;\n')
 dhcp2.append('}')
 arquivo.writelines(dhcp2)
 
-os.system("exit") #sair do root
 
 #start do serviço  
 os.system("service isc-dhcp-server start")
