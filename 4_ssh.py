@@ -14,9 +14,13 @@ os.system("systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("systemctl status ssh")
 
+# Defina o caminho da pasta onde você deseja gerar a chave
+ssh_key_dir = "/home/cluster/.ssh"
+ssh_key_path = os.path.join(ssh_key_dir, "id_rsa")
+
 #gerar key SSH 
-print("Gerando chave ssh...")
-os.system("ssh-keygen")
+print(f"Gerando chave ssh em {ssh_key_path}...")
+os.system(f"ssh-keygen -f {ssh_key_path}")
 
 #caminho da pasta .ssh
 print("Caminhando para a pasta .ssh...")
