@@ -14,7 +14,7 @@ os.system("systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("systemctl status ssh")
 
-# Criar pasta .ssh e ajustar permissões
+""" # Criar pasta .ssh e ajustar permissões
 os.system("mkdir -p /home/cluster/.ssh")
 os.system("chown cluster:cluster /home/cluster/.ssh")
 os.system("chmod 700 /home/cluster/.ssh")
@@ -30,9 +30,13 @@ os.system(f"sudo -u cluster ssh-keygen -f {ssh_key_path} -N ''")
 # Ajustar permissões da chave
 os.system(f"chown cluster:cluster {ssh_key_path} {ssh_key_path}.pub")
 os.system(f"chmod 600 {ssh_key_path}")
-os.system(f"chmod 644 {ssh_key_path}.pub")
+os.system(f"chmod 644 {ssh_key_path}.pub") """
+
+# Gerar chave SSH
+print(f"Gerando chave ssh...")
+os.system(f"ssh-keygen")
 
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
 for ip in ip_list:
-    os.system(f"sudo -u cluster ssh-copy-id -i {ssh_key_path}.pub cluster@{ip}")
+    os.system(f"sudo -u cluster ssh-copy-id -i ~/.ssh/id_rsa.pub cluster@{ip}")
