@@ -14,6 +14,9 @@ os.system("systemctl enable ssh")
 print("Monitorando servidor ssh...")
 os.system("systemctl status ssh")
 
+#criar pasta .ssh
+os.system("mkdir /home/cluster/.ssh")
+
 # Defina o caminho da pasta onde você deseja gerar a chave
 ssh_key_dir = "/home/cluster/.ssh"
 
