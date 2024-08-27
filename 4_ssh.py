@@ -19,6 +19,7 @@ os.system("mkdir /home/cluster/.ssh")
 
 # Defina o caminho da pasta onde você deseja gerar a chave
 ssh_key_dir = "/home/cluster/.ssh"
+ssh_key_path = os.path.join(ssh_key_dir, "id_rsa")
 
 #gerar key SSH 
 print(f"Gerando chave ssh em {ssh_key_dir}...")
