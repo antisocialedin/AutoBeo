@@ -28,4 +28,4 @@ os.system(f"ssh-keygen -f {ssh_key_path}")
 # Copia a chave para cada IP na lista
 print("Copiando chave para os IPs...")
 for ip in ip_list:
-    os.system(f"ssh-copy-id -i {ssh_key_path}.pub cluster@{ip}")
+    os.system(f"ssh-copy-id -i /home/cluster/.ssh/id_rsa.pub cluster@{ip}")
