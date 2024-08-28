@@ -14,9 +14,9 @@ for ip in ip_list:
     os.system("sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir")
 
     #editar fstab (apenas Nós)
-    os.system("sudo > /etc/fstab") #limpa o arquivo
+    os.system(" > /etc/fstab") #limpa o arquivo
 
-    arquivo = open("sudo /etc/fstab", "a")
+    arquivo = open(" /etc/fstab", "a")
     fstab = list()
     fstab.append("192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0 \n")
     arquivo.writelines(fstab)
