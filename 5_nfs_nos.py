@@ -9,7 +9,7 @@ from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 for ip in ip_list:
     # Configurações SSH
     hostname = ip  # IP do nó, por exemplo
-    username = 'cluster'
+    username = 'root'
     password = '1234'
 
     # Cria o cliente SSH
