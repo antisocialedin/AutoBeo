@@ -20,6 +20,7 @@ arquivo.writelines(exports)
 os.system("systemctl enable nfs-kernel-server")
 
 #iniciar serviço de NFS (apenas Mestre)
+print("Iniciando servidor NFS...")
 os.system("systemctl restart nfs-kernel-server")
 
 
