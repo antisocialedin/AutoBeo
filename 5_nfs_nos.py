@@ -42,15 +42,9 @@ for ip in ip_list:
         comandos = """
             if [ ! -d ~/clusterdir ]; then
                 mkdir -p ~/clusterdir
-            fi 
-            
-            &&
-             
+            fi &&
             echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
-            sudo mv /tmp/fstab.temp /etc/fstab
-
-            &&
-            
+            sudo mv /tmp/fstab.temp /etc/fstab &&
             sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
             """
 
