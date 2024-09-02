@@ -4,7 +4,7 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
 import os
-import paramiko # type: ignore
+import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 #criar e copiar conteudo do diretório compartilhado (apenas Nós)
