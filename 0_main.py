@@ -63,7 +63,7 @@ while True:
             print("Configurando NFS mestre...")
             os.system("python3 5_nfs_mestre.py")
 
-            print("Configurando NFS nos...")
+            print("Configurando NFS nós...")
             os.system("python3 5_nfs_nos.py")
 
         case 7:
