@@ -15,3 +15,5 @@ os.system("apt-get install nfs-kernel-server") #apenas mestre
 os.system("apt-get install nfs-common")
 os.system("apt-get install portmap")
 os.system("apt-get install build-essential")
+os.system("apt-get install python3-pip")
+os.system("pip install paramiko")
