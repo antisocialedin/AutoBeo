@@ -40,11 +40,13 @@ for ip in ip_list:
 
         # Solicita um pseudo-terminal para o comando sudo funcionar corretamente
         comandos = """
-        mkdir -p ~/clusterdir &&
-        sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
-        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
-        sudo mv /tmp/fstab.temp /etc/fstab
-        """
+            if [ ! -d ~/clusterdir ]; then
+                mkdir -p ~/clusterdir
+            fi &&
+            sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
+            echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
+            sudo mv /tmp/fstab.temp /etc/fstab
+            """
 
         # Executa os comandos no nó remoto com pty
         stdin, stdout, stderr = client.exec_command(comandos, get_pty=True)
