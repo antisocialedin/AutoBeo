@@ -41,9 +41,9 @@ for ip in ip_list:
         # Define o conjunto de comandos
         comandos = """
         mkdir ~/clusterdir &&
-        echo '1234' | sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
-        echo '1234' | sudo -S sh -c 'echo "" > /etc/fstab' &&
-        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | echo 'sua_senha' | sudo -S tee -a /etc/fstab
+        sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
+        sudo sh -c 'echo "" > /etc/fstab' &&
+        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee -a /etc/fstab
         """
 
         # Executa os comandos no nó remoto
