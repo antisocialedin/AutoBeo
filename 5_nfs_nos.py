@@ -3,30 +3,12 @@
 # 15/08/2024
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
-import os
 import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
-#criar e copiar conteudo do diretório compartilhado (apenas Nós)
-""" for ip in ip_list:
-
-    os.system(f"ssh cluster@{ip}")
-    os.system("mkdir ~/clusterdir")
-    os.system("sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir")
-
-    #editar fstab (apenas Nós)
-    os.system(" > /etc/fstab") #limpa o arquivo
-
-    arquivo = open(" /etc/fstab", "a")
-    fstab = list()
-    fstab.append("192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0 \n")
-    arquivo.writelines(fstab)
-
-    os.system("exit") """
-
 for ip in ip_list:
     # Configurações SSH
-    hostname = ip  # IP do nó1, por exemplo
+    hostname = ip  # IP do nó, por exemplo
     username = 'cluster'
     password = '1234'
 
@@ -38,17 +20,20 @@ for ip in ip_list:
         # Conecta ao host
         client.connect(hostname, username=username, password=password)
 
-        # Solicita um pseudo-terminal para o comando sudo funcionar corretamente
+        # Comandos a serem executados remotamente
         comandos = """
+            # Cria o diretório se não existir
             if [ ! -d ~/clusterdir ]; then
                 mkdir -p ~/clusterdir
             fi &&
+            # Atualiza o arquivo /etc/fstab com as configurações NFS
             echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
             sudo mv /tmp/fstab.temp /etc/fstab &&
+            # Monta o diretório NFS
             sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
             """
 
-        # Executa os comandos no nó remoto com pty
+        # Executa os comandos no nó remoto
         stdin, stdout, stderr = client.exec_command(comandos, get_pty=True)
         stdin.write(f"{password}\n")
         stdin.flush()
@@ -58,10 +43,9 @@ for ip in ip_list:
         erros = stderr.read().decode()
 
         # Exibe a saída e os erros
-        print("Saída:", output)
-        print("Erros:", erros)
+        print(f"Saída do nó {ip}:", output)
+        print(f"Erros no nó {ip}:", erros)
 
     finally:
         # Fecha a conexão
         client.close()
-
