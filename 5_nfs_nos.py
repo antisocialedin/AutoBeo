@@ -43,7 +43,7 @@ for ip in ip_list:
             if [ ! -d ~/clusterdir ]; then
                 mkdir -p ~/clusterdir
             fi &&
-            sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
+            sudo mount -t nfs 192.168.40.0:/home/cluster/clusterdir /home/cluster/clusterdir &&
             echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
             sudo mv /tmp/fstab.temp /etc/fstab
             """
