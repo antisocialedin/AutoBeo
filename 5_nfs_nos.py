@@ -38,15 +38,18 @@ for ip in ip_list:
         # Conecta ao host
         client.connect(hostname, username=username, password=password)
 
-        # Define o conjunto de comandos
+        # Solicita um pseudo-terminal para o comando sudo funcionar corretamente
         comandos = """
-        mkdir ~/clusterdir &&
+        mkdir -p ~/clusterdir &&
         sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir &&
-        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee /etc/fstab
+        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
+        sudo mv /tmp/fstab.temp /etc/fstab
         """
 
-        # Executa os comandos no nó remoto
-        stdin, stdout, stderr = client.exec_command(comandos)
+        # Executa os comandos no nó remoto com pty
+        stdin, stdout, stderr = client.exec_command(comandos, get_pty=True)
+        stdin.write(f"{password}\n")
+        stdin.flush()
 
         # Lê a saída e os erros do comando
         output = stdout.read().decode()
@@ -59,3 +62,4 @@ for ip in ip_list:
     finally:
         # Fecha a conexão
         client.close()
+
