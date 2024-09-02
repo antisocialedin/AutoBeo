@@ -17,10 +17,11 @@ exports.append("/home/cluster/clusterdir 192.168.40.0/24(rw,no_subtree_check,asy
 arquivo.writelines(exports)
 
 #iniciar serviço de NFS (apenas Mestre)
+print("Iniciando servidor NFS...")
 os.system("systemctl enable nfs-kernel-server")
 
 #iniciar serviço de NFS (apenas Mestre)
-print("Iniciando servidor NFS...")
-os.system("systemctl restart nfs-kernel-server")
+print("Restart servidor NFS...")
+os.system("sudo /etc/init.d/nfs-kernel-server restart")
 
 
