@@ -22,14 +22,14 @@ for ip in ip_list:
 
         # Comandos a serem executados remotamente
         comandos = """
-            # Cria o diretório se não existir
-            mkdir -p ~/clusterdir &&
-            # Atualiza o arquivo /etc/fstab com as configurações NFS
-            echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
-            mv /tmp/fstab.temp /etc/fstab &&
-            # Monta o diretório NFS
-            mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
-            """
+        # Cria o diretório se não existir
+        mkdir -p ~/clusterdir &&
+        # Atualiza o arquivo /etc/fstab com as configurações NFS
+        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" | sudo -S tee /tmp/fstab.temp &&
+        mv /tmp/fstab.temp /etc/fstab &&
+        # Monta o diretório NFS
+        sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
+        """
 
         # Executa os comandos no nó remoto
         stdin, stdout, stderr = client.exec_command(comandos, get_pty=True)
