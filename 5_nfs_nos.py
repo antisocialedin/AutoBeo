@@ -15,7 +15,7 @@ def configure_node(ip):
     # Conectar ao nó via SSH
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(ip, username='cluster')
+    ssh.connect(ip, username='cluster', password='1234')
 
     # Criar diretório compartilhado
     ssh.exec_command("mkdir -p /home/cluster/clusterdir")
