@@ -21,7 +21,7 @@ for ip in ip_list:
         client.connect(hostname, username=username, password=password)
 
         # Comando 1: Criar o diretório
-        comando1 = "mkdir -p ~/clusterdir"
+        comando1 = "mkdir -p /home/cluster/clusterdir"
         stdin, stdout, stderr = client.exec_command(comando1)
         print(f"Saída do nó {ip} - mkdir:", stdout.read().decode(), stderr.read().decode())
 
