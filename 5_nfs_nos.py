@@ -26,24 +26,18 @@ for ip in ip_list:
         print(f"Saída do nó {ip} - mkdir:", stdout.read().decode(), stderr.read().decode())
 
         # Comando 2: Atualizar o /etc/fstab
-        comando2 = "echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0' | sudo -S tee /tmp/fstab.temp"
-        stdin, stdout, stderr = client.exec_command(comando2, get_pty=True)
-        stdin.write(f"{password}\n")
-        stdin.flush()
+        comando2 = f"echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0' | sudo -S tee /tmp/fstab.temp <<< '{password}'"
+        stdin, stdout, stderr = client.exec_command(comando2)
         print(f"Saída do nó {ip} - fstab update:", stdout.read().decode(), stderr.read().decode())
 
         # Comando 3: Mover o arquivo fstab temporário para o /etc/fstab
-        comando3 = "sudo mv /tmp/fstab.temp /etc/fstab"
-        stdin, stdout, stderr = client.exec_command(comando3, get_pty=True)
-        stdin.write(f"{password}\n")
-        stdin.flush()
+        comando3 = f"echo '{password}' | sudo -S mv /tmp/fstab.temp /etc/fstab"
+        stdin, stdout, stderr = client.exec_command(comando3)
         print(f"Saída do nó {ip} - move fstab:", stdout.read().decode(), stderr.read().decode())
 
         # Comando 4: Montar o diretório NFS
-        comando4 = "sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
-        stdin, stdout, stderr = client.exec_command(comando4, get_pty=True)
-        stdin.write(f"{password}\n")
-        stdin.flush()
+        comando4 = f"echo '{password}' | sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
+        stdin, stdout, stderr = client.exec_command(comando4)
         print(f"Saída do nó {ip} - mount:", stdout.read().decode(), stderr.read().decode())
 
     except paramiko.SSHException as e:
