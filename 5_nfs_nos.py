@@ -22,8 +22,6 @@ for ip in ip_list:
 
         # Comandos a serem executados remotamente
         comandos = """
-        # Cria o diretório se não existir
-        mkdir ~/clusterdir &&
         # Atualiza o arquivo /etc/fstab com as configurações NFS
         echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" &&
         # Monta o diretório NFS
@@ -46,3 +44,12 @@ for ip in ip_list:
     finally:
         # Fecha a conexão
         client.close()
+
+
+"""         # Cria o diretório se não existir
+        mkdir ~/clusterdir &&
+        # Atualiza o arquivo /etc/fstab com as configurações NFS
+        echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" &&
+        # Monta o diretório NFS
+        sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
+        """
