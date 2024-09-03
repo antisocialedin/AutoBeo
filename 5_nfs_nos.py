@@ -3,11 +3,6 @@
 # 15/08/2024
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
-#!/usr/bin/env python
-# Eder Filho
-# 15/08/2024
-# SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
-
 import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
@@ -15,7 +10,12 @@ def configure_node(ip):
     # Conectar ao nó via SSH
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(ip, username='cluster', password='1234')
+    
+    # Autenticação por chave
+    private_key_path = '/home/cluster/.ssh'  # Substitua pelo caminho da sua chave privada
+    private_key = paramiko.RSAKey.from_private_key_file(private_key_path)
+    
+    ssh.connect(ip, username='cluster', pkey=private_key)
 
     # Criar diretório compartilhado
     ssh.exec_command("mkdir -p /home/cluster/clusterdir")
