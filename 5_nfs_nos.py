@@ -12,7 +12,7 @@ def configure_node(ip):
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     
     # Autenticação por chave
-    private_key_path = '/home/cluster/.ssh'  # Substitua pelo caminho da sua chave privada
+    private_key_path = '/home/cluster/.ssh/id_rsa'  # Substitua pelo caminho da sua chave privada
     private_key = paramiko.RSAKey.from_private_key_file(private_key_path)
     
     ssh.connect(ip, username='cluster', pkey=private_key)
