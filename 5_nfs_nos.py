@@ -8,7 +8,7 @@ from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 for ip in ip_list:
     # Configurações SSH
-    hostname = ip
+    hostname = ip  # IP do nó, por exemplo
     username = 'cluster'
     password = '1234'
 
@@ -17,31 +17,35 @@ for ip in ip_list:
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
     try:
-        print(f"Conectando ao nó {ip}...")
+        # Conecta ao host
         client.connect(hostname, username=username, password=password)
 
-        # Comando 1: Criar o diretório
-        comando1 = "mkdir -p /home/cluster/clusterdir"
-        stdin, stdout, stderr = client.exec_command(comando1)
-        print(f"Saída do nó {ip} - mkdir:", stdout.read().decode(), stderr.read().decode())
+        # Comandos a serem executados remotamente
+        comandos = """
+            # Cria o diretório se não existir
+            if [ ! -d ~/clusterdir ]; then
+                mkdir -p ~/clusterdir
+            fi &&
+            # Atualiza o arquivo /etc/fstab com as configurações NFS
+            echo "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0" | sudo tee /tmp/fstab.temp &&
+            sudo mv /tmp/fstab.temp /etc/fstab &&
+            # Monta o diretório NFS
+            sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir
+            """
 
-        # Comando 2: Atualizar o /etc/fstab
-        comando2 = f"echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,async,hard,int 0 0' | sudo -S tee /tmp/fstab.temp <<< '{password}'"
-        stdin, stdout, stderr = client.exec_command(comando2)
-        print(f"Saída do nó {ip} - fstab update:", stdout.read().decode(), stderr.read().decode())
+        # Executa os comandos no nó remoto
+        stdin, stdout, stderr = client.exec_command(comandos, get_pty=True)
+        stdin.write(f"{password}\n")
+        stdin.flush()
 
-        # Comando 3: Mover o arquivo fstab temporário para o /etc/fstab
-        comando3 = f"echo '{password}' | sudo -S mv /tmp/fstab.temp /etc/fstab"
-        stdin, stdout, stderr = client.exec_command(comando3)
-        print(f"Saída do nó {ip} - move fstab:", stdout.read().decode(), stderr.read().decode())
+        # Lê a saída e os erros do comando
+        output = stdout.read().decode()
+        erros = stderr.read().decode()
 
-        # Comando 4: Montar o diretório NFS
-        comando4 = f"echo '{password}' | sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
-        stdin, stdout, stderr = client.exec_command(comando4)
-        print(f"Saída do nó {ip} - mount:", stdout.read().decode(), stderr.read().decode())
-
-    except paramiko.SSHException as e:
-        print(f"Erro ao conectar ao nó {ip}: {str(e)}")
+        # Exibe a saída e os erros
+        print(f"Saída do nó {ip}:", output)
+        print(f"Erros no nó {ip}:", erros)
 
     finally:
+        # Fecha a conexão
         client.close()
