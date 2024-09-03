@@ -8,7 +8,9 @@ from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 for ip in ip_list:
     #criar diretório compartilhado nos
-    os.system(f"ssh {ip} 'mkdir /home/cluster/clusterdir'")
+    os.system("ssh cluster@{ip}")
+               
+    os.system("mkdir /home/cluster/clusterdir")
 
     #editar fstab (apenas Nós)
     os.system(" > /etc/fstab") #limpa o arquivo
