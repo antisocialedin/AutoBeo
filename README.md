@@ -1,2 +1,2 @@
-# Script Cluster
- Script para automação da configuração de um cluster beowulf 
+# AutoBeo
+ UMA SOLUÇÃO PARA CONSTRUÇÃO DE UM CLUSTER BEOWULF
