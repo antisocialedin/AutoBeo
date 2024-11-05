@@ -1,63 +1,20 @@
-# AutoBeo
- UMA SOLUÇÃO PARA CONSTRUÇÃO DE UM CLUSTER BEOWULF
+# AutoBeo: UMA SOLUÇÃO PARA CONSTRUÇÃO DE UM CLUSTER BEOWULF
+ 
+Este repositório contém os dados e ferramentas desenvolvidos  sobre a automação de configuração de Clusters Beowulf, uma solução prática para lidar com a crescente demanda de poder computacional em aplicações científicas e acadêmicas. 
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto de Automação de Cluster Beowulf</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        .code {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: monospace;
-        }
-    </style>
-</head>
-<body>
+# Resumo do Projeto
 
-    <h1>Projeto de Automação de Cluster Beowulf</h1>
+O crescimento exponencial da quantidade de dados e da complexidade de aplicações científicas e acadêmicas elevou a demanda por poder computacional, tornando inviável o processamento sequencial em muitos casos. Para atender a essa necessidade de forma acessível, este trabalho desenvolve uma solução baseada em Clusters Beowulf, que utilizam múltiplos computadores comuns conectados para processar tarefas em paralelo. Como a configuração manual desses clusters exige conhecimentos técnicos específicos e tempo proporcional ao número de máquinas, o projeto inclui uma versão personalizada do sistema operacional Ubuntu e um script de automação que simplifica e acelera o processo. Os testes demonstraram uma redução significativa no tempo de instalação e configuração das máquinas, tornando o uso de Clusters Beowulf mais acessível a usuários com menos experiência técnica e mais eficiente para aplicações que requerem processamento paralelo.
 
-    <p>Este repositório contém os dados e ferramentas desenvolvidos em nossa pesquisa sobre a automação de configuração de Clusters Beowulf, uma solução prática para lidar com a crescente demanda de poder computacional em aplicações científicas e acadêmicas. Abaixo, você encontrará um resumo do nosso projeto, bem como todos os recursos necessários para recriar o ambiente configurado.</p>
+# Conteúdo do Repositório
 
-    <h2>Resumo do Projeto</h2>
+- ISO/: Contém a ISO personalizada do Ubuntu LTS 20.04.
+- Script/: Diretório com o script de automação e instruções para sua utilização.
+- Guia_de_Configuracao/: Inclui o guia de configuração manual para referência.
 
-    <p>Com o aumento exponencial da quantidade de dados e a complexidade das aplicações, tornou-se inviável processar informações de forma sequencial em muitos casos. Visando uma solução acessível para tal desafio, desenvolvemos uma abordagem baseada em Clusters Beowulf, que utiliza computadores comuns interconectados para processar tarefas em paralelo.</p>
+# Resultados da Pesquisa
 
-    <p>A configuração manual de um Cluster Beowulf, no entanto, requer conhecimentos técnicos específicos e tempo proporcional ao número de máquinas. Para simplificar e acelerar o processo, nosso projeto inclui:</p>
-    
-    <ul>
-        <li><strong>ISO Personalizada do Ubuntu LTS 20.04</strong>: uma imagem do Ubuntu com todos os requisitos para a montagem de um Cluster Beowulf já pré-instalados.</li>
-        <li><strong>Guia de Configuração Personalizado</strong>: um passo a passo detalhado para ajudar na montagem e configuração manual do Cluster.</li>
-        <li><strong>Script de Automação</strong>: desenvolvido em Python, nosso script facilita a criação do Cluster Beowulf, automatizando a configuração de rede e o ambiente necessário, além de eliminar a necessidade de configuração manual em cada nó.</li>
-    </ul>
+Os testes realizados com o script de automação mostraram uma redução de cerca de 81,6% no tempo necessário para instalação e configuração do Cluster em comparação com o método manual. Com isso, nossa solução torna o uso de Clusters Beowulf mais acessível a usuários com pouca experiência técnica e mais eficiente para atender aplicações que exigem processamento paralelo.
 
-    <h2>Conteúdo do Repositório</h2>
+Para iniciar, recomendamos começar pelo guia de configuração para se familiarizar com o processo manual, seguido da instalação da ISO personalizada e execução do script, conforme as instruções detalhadas.
 
-    <ul>
-        <li><code>ISO/</code>: Contém a ISO personalizada do Ubuntu LTS 20.04.</li>
-        <li><code>Script/</code>: Diretório com o script de automação e instruções para sua utilização.</li>
-        <li><code>Guia_de_Configuracao/</code>: Inclui o guia de configuração manual para referência.</li>
-    </ul>
-
-    <h2>Resultados da Pesquisa</h2>
-
-    <p>Os testes realizados com o script de automação mostraram uma redução de cerca de 81,6% no tempo necessário para instalação e configuração do Cluster em comparação com o método manual. Com isso, nossa solução torna o uso de Clusters Beowulf mais acessível a usuários com pouca experiência técnica e mais eficiente para atender aplicações que exigem processamento paralelo.</p>
-
-    <p>Para iniciar, recomendamos começar pelo guia de configuração para se familiarizar com o processo manual, seguido da instalação da ISO personalizada e execução do script, conforme as instruções detalhadas.</p>
-
-</body>
-</html>
