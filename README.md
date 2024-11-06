@@ -28,14 +28,14 @@
 
 <p>Navegue até a pasta contendo o arquivo <code>0_main.py</code>:</p>
 
-<pre><code>cluster@mestre:~$ cd ~/AutoBeo/Script
+<pre><code>cd ~/AutoBeo/Script
 </code></pre>
 
 <h3>2 – Executar o Script</h3>
 
 <p>Para iniciar a automação, execute o script com o comando:</p>
 
-<pre><code>cluster@mestre:~$ sudo python3 0_main.py
+<pre><code>sudo python3 0_main.py
 </code></pre>
 
 <h3>3 – Avançar no Script</h3>
