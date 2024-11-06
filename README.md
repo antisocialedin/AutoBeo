@@ -28,7 +28,7 @@
 
 <p>Navegue até a pasta contendo o arquivo <code>0_main.py</code>:</p>
 
-<pre><code>cluster@mestre:~$ cd ~/'Área de Trabalho'/AutoBeo/Script
+<pre><code>cluster@mestre:~$ cd ~/AutoBeo/Script
 </code></pre>
 
 <h3>2 – Executar o Script</h3>
