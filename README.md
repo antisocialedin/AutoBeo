@@ -18,3 +18,19 @@ Os testes realizados com o script de automação mostraram uma redução de cerc
 
 Para iniciar, recomendamos começar pelo guia de configuração para se familiarizar com o processo manual, seguido da instalação da ISO personalizada e execução do script, conforme as instruções detalhadas.
 
+# Primeiros Passos
+
+<h4> 1 – Caminho para o Diretório <h4>
+
+Caminhe para a pasta contendo o arquivo 0_main.py
+
+cluster@mestre: ~$ cd ~/’Área de Trabalho’/AutoBeo/Script
+
+<h4> 2 – Executar Script <h4>
+
+cluster@mestre: ~$ sudo python3 0_main.py
+
+<h4> 3 – Avançar <h4>
+
+Em alguns momentos o script é pausado por conta de mensagens de status, para avançar basta teclar “q”
+
