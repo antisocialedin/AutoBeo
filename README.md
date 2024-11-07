@@ -13,7 +13,7 @@
 <ul>
   <li><strong>AutoBeo_OS</strong>: Contém a ISO personalizada do Ubuntu LTS 20.04.</li>
   <li><strong>Script</strong>: Diretório com o script de automação e instruções para sua utilização.</li>
-  <li><strong>Guia - AutoBeo</strong>: Inclui o guia de configuração autumatizado</li>
+  <li><strong>Guia - AutoBeo</strong>: Inclui o guia de configuração automatizado</li>
   <li><strong>Guia - Manual</strong>: Inclui o guia de configuração manual</li>
 </ul>
 
