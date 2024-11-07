@@ -21,11 +21,11 @@
 
 <h3>1 – Realizar Download da ISO</h3>
 
-<p>Faça o download do sistema operacional e instale em todas as máquinas que vão ser utilizadas no cluster</p>
+<p>Faça o download do sistema operacional e instale em todas as máquinas que vão ser utilizadas no cluster (atente-se para que o nome de usuário seja o mesmo em todas)</p>
 
 <pre><code>https://mega.nz/file/fF8VyLrD#uvJXEQHkn8GhbEc01VRRB4Nzky_zA0AntfvTieDUm9s</code></pre>
 
-<h3>2 – Navegar até o Diretório do Script</h3>
+<h3>2 – Navegue até o Diretório do Script</h3>
 
 <p>Estando no computador "Mestre" navegue até a pasta contendo o arquivo <code>0_main.py</code>:</p>
 
