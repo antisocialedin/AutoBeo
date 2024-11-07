@@ -1,4 +1,4 @@
-<h1>AutoBeo: Automação para Configuração de Clusters Beowulf</h1>
+<h1>AutoBeo: Uma Solução para Contrução de um Cluster Beowulf</h1>
 
 <p>Este repositório contém os dados e ferramentas desenvolvidas para a automação de configuração de Clusters Beowulf, uma solução prática para lidar com a crescente demanda de poder computacional em aplicações científicas e acadêmicas.</p>
 
