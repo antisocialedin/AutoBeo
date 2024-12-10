@@ -14,7 +14,7 @@ os.system(" > /etc/default/isc-dhcp-server") #limpa o arquivo
 
 arquivo = open("/etc/default/isc-dhcp-server", "a")
 dhcp = list()
-dhcp.append('INTERFACESv4="enp0s8') #verificar nome da placa
+dhcp.append('INTERFACESv4="enp0s8"') #verificar nome da placa
 arquivo.writelines(dhcp)
 
 os.system(" > /etc/dhcp/dhcpd.conf") #limpa o arquivo
