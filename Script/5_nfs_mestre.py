@@ -24,4 +24,6 @@ os.system("systemctl enable nfs-kernel-server")
 print("Restart servidor NFS...")
 os.system("sudo /etc/init.d/nfs-kernel-server restart")
 
-
+#iniciar serviço de NFS (apenas Mestre)
+print("Restart servidor NFS...")
+os.system("sudo /etc/init.d/nfs-kernel-server restart")
