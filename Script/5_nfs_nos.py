@@ -26,26 +26,32 @@ def configure_node(ip, sudo_password):
     fstab_entry = "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0\n"
     command = f'echo "{fstab_entry}" | sudo -S tee -a /etc/fstab'
     
-    # Executar o comando e enviar a senha via communicate
+    # Executar o comando e enviar a senha via stdin.write()
     stdin, stdout, stderr = ssh.exec_command(command)
-    stdin.write(sudo_password + '\n')
+    stdin.write(sudo_password + '\n')  # Passa a senha aqui
     stdin.flush()
 
-    # Espera pela execução do comando e captura a saída
-    stdout_data, stderr_data = stdout.read(), stderr.read()
+    # Captura a saída do comando
+    stdout_data = stdout.read().decode()
+    stderr_data = stderr.read().decode()
     if stderr_data:
-        print(f"Erro ao editar /etc/fstab no nó {ip}: {stderr_data.decode()}")
-    
+        print(f"Erro ao editar /etc/fstab no nó {ip}: {stderr_data}")
+    else:
+        print(f"Arquivo /etc/fstab editado com sucesso no nó {ip}")
+
     # Montar o diretório com sudo
     mount_command = "sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
     stdin, stdout, stderr = ssh.exec_command(mount_command)
-    stdin.write(sudo_password + '\n')
+    stdin.write(sudo_password + '\n')  # Passa a senha para o mount
     stdin.flush()
 
-    # Espera pela execução do comando de montagem
-    stdout_data, stderr_data = stdout.read(), stderr.read()
+    # Captura a saída do comando de montagem
+    stdout_data = stdout.read().decode()
+    stderr_data = stderr.read().decode()
     if stderr_data:
-        print(f"Erro ao montar diretório no nó {ip}: {stderr_data.decode()}")
+        print(f"Erro ao montar diretório no nó {ip}: {stderr_data}")
+    else:
+        print(f"Diretório montado com sucesso no nó {ip}")
 
     # Fechar conexões
     ssh.close()
