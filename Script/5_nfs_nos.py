@@ -20,16 +20,22 @@ def configure_node(ip):
     # Criar diretório compartilhado
     ssh.exec_command("mkdir -p /home/cluster/clusterdir")
 
-    # Limpar e editar o arquivo fstab
-    sftp = ssh.open_sftp()
-    with sftp.file('/etc/fstab', 'w') as fstab_file:
-        fstab_file.write("192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0\n")
+    # Editar o arquivo fstab com privilégios de superusuário
+    fstab_entry = "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0\n"
+    command = f'echo "{fstab_entry}" | sudo tee -a /etc/fstab'
+    stdin, stdout, stderr = ssh.exec_command(command)
+    stderr_output = stderr.read().decode()
+    if stderr_output:
+        print(f"Erro ao editar /etc/fstab no nó {ip}: {stderr_output}")
     
-    # Montar o diretório
-    ssh.exec_command("sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir")
+    # Montar o diretório com sudo
+    mount_command = "sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
+    stdin, stdout, stderr = ssh.exec_command(mount_command)
+    stderr_output = stderr.read().decode()
+    if stderr_output:
+        print(f"Erro ao montar diretório no nó {ip}: {stderr_output}")
 
     # Fechar conexões
-    sftp.close()
     ssh.close()
 
 # Configurar todos os nós
