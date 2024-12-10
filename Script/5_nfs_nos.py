@@ -6,7 +6,7 @@
 import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
-sudo_password = 1234  # Senha do sudo
+sudo_password = "1234"  # Senha do sudo
 
 def configure_node(ip, sudo_password):
     # Conectar ao nó via SSH
