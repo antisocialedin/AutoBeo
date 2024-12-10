@@ -6,7 +6,7 @@
 import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
-def configure_node(ip):
+def configure_node(ip, sudo_password):
     # Conectar ao nó via SSH
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -22,15 +22,21 @@ def configure_node(ip):
 
     # Editar o arquivo fstab com privilégios de superusuário
     fstab_entry = "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0\n"
-    command = f'echo "{fstab_entry}" | sudo tee -a /etc/fstab'
+    command = f'echo "{fstab_entry}" | sudo -S tee -a /etc/fstab'
     stdin, stdout, stderr = ssh.exec_command(command)
+    stdin.write(sudo_password + '\n')  # Envia a senha do sudo para o comando
+    stdin.flush()
+    
     stderr_output = stderr.read().decode()
     if stderr_output:
         print(f"Erro ao editar /etc/fstab no nó {ip}: {stderr_output}")
     
     # Montar o diretório com sudo
-    mount_command = "sudo mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
+    mount_command = "sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
     stdin, stdout, stderr = ssh.exec_command(mount_command)
+    stdin.write(sudo_password + '\n')  # Envia a senha do sudo para o comando
+    stdin.flush()
+    
     stderr_output = stderr.read().decode()
     if stderr_output:
         print(f"Erro ao montar diretório no nó {ip}: {stderr_output}")
@@ -40,4 +46,5 @@ def configure_node(ip):
 
 # Configurar todos os nós
 for ip in ip_list:
-    configure_node(ip)
+    sudo_password = '1234'
+    configure_node(ip, sudo_password)
