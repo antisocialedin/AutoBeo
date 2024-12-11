@@ -4,9 +4,8 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
 import paramiko
+import time
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
-
-sudo_password = "1234"  # Senha do sudo
 
 def configure_node(ip, sudo_password):
     # Conectar ao nó via SSH
@@ -23,16 +22,21 @@ def configure_node(ip, sudo_password):
     ssh.exec_command("mkdir -p /home/cluster/clusterdir")
 
     # Editar /etc/fstab
-    fstab_command = "echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0' | sudo -S tee -a /etc/fstab"
+    fstab_command = (
+        "echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0' "
+        "| sudo -S tee -a /etc/fstab"
+    )
     stdin, stdout, stderr = ssh.exec_command(fstab_command, get_pty=True)
+    time.sleep(2)  # Adicionar delay antes de fornecer a senha
     stdin.write(sudo_password + '\n')
     stdin.flush()
     print("fstab stdout:", stdout.read().decode())
     print("fstab stderr:", stderr.read().decode())
-    
+
     # Montar o diretório
     mount_command = "sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
     stdin, stdout, stderr = ssh.exec_command(mount_command, get_pty=True)
+    time.sleep(2)  # Adicionar delay antes de fornecer a senha
     stdin.write(sudo_password + '\n')
     stdin.flush()
     print("mount stdout:", stdout.read().decode())
@@ -42,5 +46,6 @@ def configure_node(ip, sudo_password):
     ssh.close()
 
 # Configurar todos os nós
+sudo_password = "1234"  # Substitua pela senha correta
 for ip in ip_list:
     configure_node(ip, sudo_password)
