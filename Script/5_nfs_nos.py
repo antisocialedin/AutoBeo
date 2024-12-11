@@ -27,8 +27,8 @@ def configure_node(ip, sudo_password):
     command = f'echo "{fstab_entry}" | sudo -S tee -a /etc/fstab'
     
     # Executar o comando e enviar a senha via stdin.write()
-    stdin, stdout, stderr = ssh.exec_command("sudo -S whoami", get_pty=True)
-    stdin.write(sudo_password + '\n')
+    stdin, stdout, stderr = ssh.exec_command(command)
+    stdin.write(sudo_password + '\n')  # Passa a senha aqui
     stdin.flush()
 
     # Captura a saída do comando
@@ -44,8 +44,7 @@ def configure_node(ip, sudo_password):
     stdin, stdout, stderr = ssh.exec_command(mount_command)
     
     # Passa a senha para o sudo
-    stdin, stdout, stderr = ssh.exec_command("sudo -S whoami", get_pty=True)
-    stdin.write(sudo_password + '\n')
+    stdin.write(sudo_password + '\n')  # Passa a senha para o mount
     stdin.flush()
 
     # Captura a saída do comando de montagem
