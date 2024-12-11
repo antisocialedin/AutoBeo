@@ -6,6 +6,9 @@
 import paramiko
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
+# Configurar todos os nós
+sudo_password = "1234"  # Substitua pela senha correta
+
 def configure_node(ip, sudo_password):
     try:
         # Conectar ao nó via SSH
@@ -42,7 +45,7 @@ def configure_node(ip, sudo_password):
         stdin.write(sudo_password + '\n')
         stdin.flush()
         #print("script stdout:", stdout.read().decode())
-        print("script stderr:", stderr.read().decode())
+        #print("script stderr:", stderr.read().decode())
 
     except Exception as e:
         print(f"Erro ao configurar o nó {ip}: {e}")
@@ -52,7 +55,5 @@ def configure_node(ip, sudo_password):
         if ssh:
             ssh.close()
 
-# Configurar todos os nós
-sudo_password = "1234"  # Substitua pela senha correta
 for ip in ip_list:
     configure_node(ip, sudo_password)
