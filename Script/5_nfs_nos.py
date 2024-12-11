@@ -41,7 +41,7 @@ def configure_node(ip, sudo_password):
         stdin, stdout, stderr = ssh.exec_command(f"sudo -S bash {remote_script_path}", get_pty=True)
         stdin.write(sudo_password + '\n')
         stdin.flush()
-        print("script stdout:", stdout.read().decode())
+        #print("script stdout:", stdout.read().decode())
         print("script stderr:", stderr.read().decode())
 
     except Exception as e:
