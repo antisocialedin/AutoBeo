@@ -40,7 +40,7 @@ def configure_node(ip, sudo_password):
         print(f"Arquivo /etc/fstab editado com sucesso no nó {ip}")
 
     # Montar o diretório com sudo
-    mount_command = "sudo -S mount -t nfs 192.16840.1:/home/cluster/clusterdir /home/cluster/clusterdir"
+    mount_command = "sudo -S mount -t nfs 192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir"
     stdin, stdout, stderr = ssh.exec_command(mount_command)
     
     # Passa a senha para o sudo
