@@ -44,7 +44,8 @@ def configure_node(ip, sudo_password):
     stdin, stdout, stderr = ssh.exec_command(mount_command)
     
     # Passa a senha para o sudo
-    stdin.write(sudo_password + '\n')  # Passa a senha para o mount
+    stdin, stdout, stderr = ssh.exec_command("sudo -S whoami", get_pty=True)
+    stdin.write(sudo_password + '\n')
     stdin.flush()
 
     # Captura a saída do comando de montagem
