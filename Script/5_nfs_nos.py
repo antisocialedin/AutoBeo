@@ -23,7 +23,7 @@ def configure_node(ip, sudo_password):
     # Criar diretório compartilhado
     ssh.exec_command("mkdir -p /home/cluster/clusterdir")
 
-    """ # Editar o arquivo fstab com privilégios de superusuário
+    # Editar o arquivo fstab com privilégios de superusuário
     fstab_entry = "192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0\n"
     command = f'echo "{fstab_entry}" | sudo -S tee -a /etc/fstab'
     
@@ -33,14 +33,7 @@ def configure_node(ip, sudo_password):
     stdin.flush()
 
     print(stdout.read().decode())
-    print(stderr.read().decode()) """
-
-    command = f"sshpass -p {sudo_password} ssh -o StrictHostKeyChecking=no cluster@{ip} 'echo 1234 | sudo -S tee -a /etc/fstab'"
-    result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if result.stderr:
-        print(f"Erro: {result.stderr.decode()}")
-    else:
-        print(f"Sucesso: {result.stdout.decode()}")
+    print(stderr.read().decode())
 
     # Captura a saída do comando
     stdout_data = stdout.read().decode()
