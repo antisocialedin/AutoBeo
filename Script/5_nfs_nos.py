@@ -4,7 +4,6 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
 import paramiko
-import subprocess
 from dhcp_get_ip import ip_list  # Importa a lista de IPs do arquivo ip_list.py
 
 sudo_password = "1234"  # Senha do sudo
@@ -31,9 +30,6 @@ def configure_node(ip, sudo_password):
     stdin, stdout, stderr = ssh.exec_command("sudo -S whoami", get_pty=True)
     stdin.write(sudo_password + '\n')
     stdin.flush()
-
-    print(stdout.read().decode())
-    print(stderr.read().decode())
 
     # Captura a saída do comando
     stdout_data = stdout.read().decode()
