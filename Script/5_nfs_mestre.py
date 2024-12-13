@@ -4,6 +4,7 @@
 # SCRIPT PARA CONFIGURAÇÃO DE CLUSTER - NFS
 
 import os
+import time
 
 #criar diretório compartilhado mestre
 os.system("mkdir /home/cluster/clusterdir")
@@ -20,14 +21,12 @@ arquivo.writelines(exports)
 print("Iniciando servidor NFS...")
 os.system("systemctl enable nfs-kernel-server")
 
-delay = 5
-
-#iniciar serviço de NFS (apenas Mestre)
+""" #iniciar serviço de NFS (apenas Mestre)
 print("Restart servidor NFS...")
 os.system("sudo systemctl restart nfs-kernel-server")
 
 #iniciar serviço de NFS (apenas Mestre)
 print("Restart servidor NFS...")
-os.system("sudo /etc/init.d/nfs-kernel-server restart")
+os.system("sudo /etc/init.d/nfs-kernel-server restart") """
 
 
