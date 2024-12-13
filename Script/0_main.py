@@ -16,6 +16,7 @@ while True:
     print("Digite 4 - Restart servidor DHCP \n")
     print("Digite 5 - Configurar o servidor SSH \n") 
     print("Digite 6 - Configurar NFS (Network File System) \n") 
+    print("Digite 7 - Restart servidor NFS \n")
     print("Digite 7 - Gerar .mpi_hostfile \n")
     print("Digite 99 - SAIR \n")
 
@@ -66,7 +67,11 @@ while True:
             print("Configurando NFS nós...")
             os.system("python3 5_nfs_nos.py")
 
-        case 7:
+        case 7: 
+            print("Restart servidor NFS...")
+            os.system("service nfs-kernel-server restart")
+
+        case 8:
             print("Gerando .mpi_hostfile...")
             os.system("python3 6_mpi_hostfile.py")
 
