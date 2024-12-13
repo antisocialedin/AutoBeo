@@ -17,7 +17,7 @@ while True:
     print("Digite 5 - Configurar o servidor SSH \n") 
     print("Digite 6 - Configurar NFS (Network File System) \n") 
     print("Digite 7 - Restart servidor NFS \n")
-    print("Digite 7 - Gerar .mpi_hostfile \n")
+    print("Digite 8 - Gerar .mpi_hostfile \n")
     print("Digite 99 - SAIR \n")
 
     opt = int(input("~: "))
