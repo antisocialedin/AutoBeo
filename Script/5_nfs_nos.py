@@ -11,6 +11,8 @@ sudo_password = "1234"  # Substitua pela senha correta
 
 def configure_node(ip, sudo_password):
     try:
+
+        print(f"Conectando SSH ao nó {ip}")
         # Conectar ao nó via SSH
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -22,10 +24,11 @@ def configure_node(ip, sudo_password):
         ssh.connect(ip, username='cluster', pkey=private_key)
 
         # Criar diretório compartilhado
+        print(f"Criando diretório compartilhado no nó {ip}")
         ssh.exec_command("mkdir -p /home/cluster/clusterdir")
 
-
         # Criar o script remoto para editar /etc/fstab e montar o diretório
+        print(f"Rodando script remoto para configurar NFS no nó {ip}")
         remote_script = """
         #!/bin/bash
         echo '192.168.40.1:/home/cluster/clusterdir /home/cluster/clusterdir nfs rw,sync,hard,int 0 0' | sudo tee -a /etc/fstab
@@ -44,8 +47,8 @@ def configure_node(ip, sudo_password):
         stdin, stdout, stderr = ssh.exec_command(f"sudo -S bash {remote_script_path}", get_pty=True)
         stdin.write(sudo_password + '\n')
         stdin.flush()
-        #print("script stdout:", stdout.read().decode())
-        #print("script stderr:", stderr.read().decode())
+        print("script stdout:", stdout.read().decode())
+        print("script stderr:", stderr.read().decode())
 
     except Exception as e:
         print(f"Erro ao configurar o nó {ip}: {e}")
