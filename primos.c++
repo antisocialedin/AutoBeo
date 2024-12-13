@@ -45,7 +45,7 @@ int main ( int argc, char *argv[] )
 		cout << "Rodando em " << p << " processos \n";
 		cout << "\n";
 		cout << " N S tempo \n";
-		cout << "\n"
+		cout << "\n";
 	}
 
 	n = n_lo;
@@ -57,16 +57,16 @@ int main ( int argc, char *argv[] )
 			wtime = MPI::Wtime ();
 		}
 		
-		MPI::COMM_WORLD.Bcast ( $n, 1, MPI::INT, master );
+		MPI::COMM_WORLD.Bcast ( &n, 1, MPI::INT, master );
 		primes_part = prime_number ( n, id, p );
 		MPI::COMM_WORLD.Reduce ( &primes_part, &primes, 1, MPI::INT, MPI::SUM, master);
 		
 		if( id == master )
 		{
-			wtime = MPI::Wtime ( ) - Wtime;
+			wtime = MPI::Wtime ( ) - wtime;
 			cout << " " << setw(8) << n
 			<< " " << setw(8) << primes
-			<< " " << setW(14) << wtime << "\n"; 
+			<< " " << setw(14) << wtime << "\n"; 
 		} 
 		
 		n = n * n_factor;
