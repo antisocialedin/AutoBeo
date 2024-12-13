@@ -38,7 +38,7 @@ for ip in ip_list:
     print(f"Tentando copiar chave para {ip}...")
     # Adicionar opção para solicitar senha se a chave pública falhar
     command = (
-        f"sshpass -p '1234' ssh-copy-id -o PreferredAuthentications=password "
+        f"sshpass -p 'SUA_SENHA_AQUI' ssh-copy-id -o PreferredAuthentications=password "
         f"-i {ssh_key_path}.pub cluster@{ip}"
     )
     result = run_command(command)
