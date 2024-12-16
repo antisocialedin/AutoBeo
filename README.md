@@ -23,7 +23,7 @@
 
 <p>Faça o download do sistema operacional e instale em todas as máquinas que vão ser utilizadas no cluster (atente-se para que o nome de usuário seja o mesmo em todas)</p>
 
-<pre><code>https://mega.nz/file/fF8VyLrD#uvJXEQHkn8GhbEc01VRRB4Nzky_zA0AntfvTieDUm9s</code></pre>
+<pre><code>https://mega.nz/file/eFsnzZIK#CFSSSs8AEwAeTcVN30g6S7YhOLBXYbOWpCVx-YpcCKY</code></pre>
 
 <h3>2 – Navegue até o Diretório do Script</h3>
 
