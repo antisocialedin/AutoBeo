@@ -29,7 +29,7 @@
 
 <p>Estando no computador "Mestre" navegue até a pasta contendo o arquivo <code>0_main.py</code>:</p>
 
-<pre><code>cd ~/AutoBeo/Script </code></pre>
+<pre><code>cd /etc/AutoBeo/Script </code></pre>
 
 <h3>3 – Executar o Script</h3>
 
@@ -40,4 +40,4 @@
 
 <h3>4 – Avançar no Script</h3>
 
-<p>Durante a execução, o script pode ser pausado por mensagens de status. Para avançar, basta pressionar <strong>"q"</strong>.</p>
+<p>Durante a execução, o script pode ser pausado por mensagens de status. Para avançar, basta pressionar <strong>"q"</strong> ou digitar a senha solicitada.</p>
